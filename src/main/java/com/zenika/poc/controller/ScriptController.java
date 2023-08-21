@@ -48,10 +48,10 @@ public class ScriptController {
         }
     }
 
-    public static String readJSFileContent() throws IOException {
+    private static String readJSFileContent() throws IOException {
         try (InputStream inputStream = ScriptController.class.getClassLoader().getResourceAsStream("static/compute.js")) {
             if (inputStream == null) {
-                throw new RuntimeException("File not found!");
+                throw new IOException("File not found!");
             }
 
             try (Scanner scanner = new Scanner(inputStream, StandardCharsets.UTF_8)) {
